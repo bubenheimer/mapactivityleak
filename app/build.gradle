@@ -1,0 +1,38 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
+
+    defaultConfig {
+        applicationId 'com.bubenheimer.mapleak'
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionName '1.0'
+        versionCode 1
+        resConfigs 'en', 'en-rUS'
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+        }
+    }
+}
+
+dependencies {
+    String playServicesVersion = '10.2.0'
+    String supportLibVersion = '25.2.0'
+    String leakCanaryVersion = '1.5'
+
+    compile "com.android.support:appcompat-v7:${supportLibVersion}"
+    compile "com.google.android.gms:play-services-maps:${playServicesVersion}"
+
+    debugCompile "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}"
+    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}"
+    testCompile "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}"
+}
