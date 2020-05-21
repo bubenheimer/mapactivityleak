@@ -1,4 +1,0 @@
-<resources>
-    <string name="app_name">Map Leak</string>
-    <string name="google_api_key" translatable="false"><Enter Google API key here></string>
-</resources>
