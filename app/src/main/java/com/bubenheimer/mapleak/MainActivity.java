@@ -1,7 +1,8 @@
 package com.bubenheimer.mapleak;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public final class MainActivity extends AppCompatActivity {
     @Override

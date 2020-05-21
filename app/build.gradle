@@ -1,18 +1,23 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId 'com.bubenheimer.mapleak'
-        minSdkVersion 16
-        targetSdkVersion 25
+        minSdkVersion 21
+        targetSdkVersion 29
         versionName '1.0'
         versionCode 1
         resConfigs 'en', 'en-rUS'
+        setMultiDexEnabled true
     }
     buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), "proguard-rules.pro"
+        }
         release {
             minifyEnabled true
             shrinkResources true
@@ -25,14 +30,15 @@ android {
 }
 
 dependencies {
-    String playServicesVersion = '10.2.0'
-    String supportLibVersion = '25.2.0'
-    String leakCanaryVersion = '1.5'
 
-    compile "com.android.support:appcompat-v7:${supportLibVersion}"
-    compile "com.google.android.gms:play-services-maps:${playServicesVersion}"
+    implementation "androidx.appcompat:appcompat:1.1.0"
 
-    debugCompile "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}"
-    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}"
-    testCompile "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}"
+    implementation name:"maps-sdk-3.0.0-beta", ext:"aar"
+//    implementation "com.google.android.gms:play-services-maps:17.0.0"
+
+    implementation "com.google.android.gms:play-services-base:17.2.1"
+    implementation "com.google.android.gms:play-services-gcm:17.0.0"
+    implementation "com.google.android.gms:play-services-location:17.0.0"
+
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:2.3"
 }
